@@ -13,12 +13,12 @@ def root():
     url = dic['url']
     exp = dic['explanation']
 
-    temp = urllib2.Request("https://www.randomtext.me/api/lorem/ul-10/7-15", headers={ 'User-Agent': 'Mozilla/5.0' })
+    temp = urllib2.Request("https://www.randomtext.me/api/gibberish/ul-10/7-15", headers={ 'User-Agent': 'Mozilla/5.0' })
     u2 = urllib2.urlopen(temp)
-    s = u2.read().replace('\\r','').replace('\\/','/')
+    s = u2.read()
     dic = json.loads(s)
-    print dic['text_out']
     ul = dic['text_out']
+    print ul
     
     
 
