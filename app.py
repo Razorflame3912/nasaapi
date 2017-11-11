@@ -13,7 +13,16 @@ def root():
     url = dic['url']
     exp = dic['explanation']
 
-    return render_template("index.html",link=url,desc=exp )
+    temp = urllib2.Request("https://www.randomtext.me/api/lorem/ul-10/7-15", headers={ 'User-Agent': 'Mozilla/5.0' })
+    u2 = urllib2.urlopen(temp)
+    s = u2.read().replace('\\r','').replace('\\/','/')
+    dic = json.loads(s)
+    print dic['text_out']
+    ul = dic['text_out']
+    
+    
+
+    return render_template("index.html",link=url,desc=exp,ul=ul)
 
 if __name__ == '__main__':
     app.debug = True
